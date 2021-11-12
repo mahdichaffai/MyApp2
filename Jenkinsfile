@@ -6,7 +6,7 @@ pipeline {
                 script{
                     checkout([$class: 'GitSCM', branches: [[name: '*/main']],extensions: [[$class: 'CloneOption', timeout: 120]],
                         userRemoteConfigs: [[
-                            credentialsId: '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', 
+                            credentialsId: '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', 
                             url: 'https://github.com/mahdichaffai/MyApp2.git']]])
                 }
             }
