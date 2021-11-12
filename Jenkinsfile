@@ -6,8 +6,8 @@ pipeline {
                 script{
                     checkout([$class: 'GitSCM', branches: [[name: '*/main']],
                         userRemoteConfigs: [[
-                            credentialsId: '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', 
-                            url: 'https://github.com/mahdichaffai/CD.git']]])
+                            credentialsId: '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', 
+                            url: 'https://github.com/mahdichaffai/MyApp2.git']]])
                 }
             }
         }
@@ -23,7 +23,7 @@ pipeline {
         stage('Build') {
              steps{
                 script{
-                    sh " ansible-playbook MyApp/ansible/build.yml -i MyApp/ansible/inventory/host.yml"
+                    sh " ansible-playbook MyApp/ansible/build.yml -i MyApp/ansible/inventory/host.yml --private-key=/var/lib/jenkins/.ssh/id_rsa -u root"
                 }
             }
         }
@@ -31,7 +31,7 @@ pipeline {
         stage('Docker'){
             steps{
                 script{
-                    sh "ansible-playbook MyApp/ansible/docker.yml -i MyApp/ansible/inventory/host.yml"
+                    sh "ansible-playbook MyApp/ansible/docker.yml -i MyApp/ansible/inventory/host.yml --private-key=/var/lib/jenkins/.ssh/id_rsa -u root"
                 }
             }
         }
