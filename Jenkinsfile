@@ -25,7 +25,7 @@ pipeline {
         stage('Build') {
              steps{
                 script{
-                    sh " ansible-playbook MyApp/ansible/build.yml -i MyApp/ansible/inventory/host.yml --private-key=/var/lib/jenkins/.ssh/id_rsa -u root"
+                    sh " ansible-playbook ansible/build.yml -i ansible/inventory/host.yml --private-key=/var/lib/jenkins/.ssh/id_rsa -u root"
                 }
             }
         }
@@ -33,10 +33,15 @@ pipeline {
         stage('Docker'){
             steps{
                 script{
-                    sh "ansible-playbook MyApp/ansible/docker.yml -i MyApp/ansible/inventory/host.yml --private-key=/var/lib/jenkins/.ssh/id_rsa -u root"
+                    sh "ansible-playbook ansible/docker.yml -i ansible/inventory/host.yml --private-key=/var/lib/jenkins/.ssh/id_rsa -u root"
                 }
             }
         }
         
         }
+        post {
+        always {
+            cleanWs()
         }
+    }
+    }
