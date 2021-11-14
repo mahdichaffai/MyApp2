@@ -4,7 +4,7 @@
   docker_login:
     username: mahdiza
     password: 214f59d3-7062-4f14-9f7b-83ba23f6ac44
-
+              
 - name: Tag and push to docker hub
   docker_image:
     name: devops:latest
