@@ -8,7 +8,7 @@ pipeline {
                     branches: [[name: '*/main']],
                     extensions: [[$class: 'CloneOption', timeout: 120]],
                         userRemoteConfigs: [[
-                            credentialsId: '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', 
+                            credentialsId: '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', 
                             url: 'https://github.com/mahdichaffai/MyApp2.git']]])
                 }
             }
