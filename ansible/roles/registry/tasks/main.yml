@@ -7,6 +7,7 @@
               
 - name: Tag and push to docker hub
   docker_image:
+    source: local
     name: devops:latest
     repository: mahdiza/devops
     tag: end
